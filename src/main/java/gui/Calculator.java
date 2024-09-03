@@ -136,11 +136,11 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 			}else{number2=number2+value; 
 			displayText.setText(number1+operator+number2);}
 		}
-		else if(value.equals("+")|value.equals("-")|value.equals("*")|value.equals("/")) {
+		else if(number1!=""&(value.equals("+")|value.equals("-")|value.equals("*")|value.equals("/"))) {
 			operator=value;
 			displayText.setText(number1+operator);
 		}
-		else if(value.equals("=")) {
+		else if(value.equals("=")&operator!=null&number1!=""&number2!="") {
 			switch (operator) {
 			case "+":
 				displayText.setText(String.valueOf(Double.parseDouble(number1)+Double.parseDouble(number2)));

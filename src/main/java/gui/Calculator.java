@@ -130,10 +130,11 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		if (value.equals("0")|value.equals("1")|value.equals("2")|
 				value.equals("3")|value.equals("4")|value.equals("5")|
 				value.equals("6")|value.equals("7")|value.equals("8")|value.equals("9")) {
-			if(number1.equals("")) {
-				number1=value;
+			if(operator==null) {
+				number1=number1+value;
 				displayText.setText(number1);
-			}else if(number2.equals("")){number2=value; displayText.setText(number1+operator+number2);}
+			}else{number2=number2+value; 
+			displayText.setText(number1+operator+number2);}
 		}
 		else if(value.equals("+")|value.equals("-")|value.equals("*")|value.equals("/")) {
 			operator=value;
@@ -142,16 +143,16 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		else if(value.equals("=")) {
 			switch (operator) {
 			case "+":
-				displayText.setText(String.valueOf(Integer.parseInt(number1)+Integer.parseInt(number2)));
+				displayText.setText(String.valueOf(Double.parseDouble(number1)+Double.parseDouble(number2)));
 				break;
 			case "-":
-				displayText.setText(String.valueOf(Integer.parseInt(number1)-Integer.parseInt(number2)));
+				displayText.setText(String.valueOf(Double.parseDouble(number1)-Double.parseDouble(number2)));
 				break;
 			case "*":
-				displayText.setText(String.valueOf(Integer.parseInt(number1)*Integer.parseInt(number2)));
+				displayText.setText(String.valueOf(Double.parseDouble(number1)*Double.parseDouble(number2)));
 				break;
 			case "/":
-				displayText.setText(String.valueOf(Integer.parseInt(number1)/Integer.parseInt(number2)));
+				displayText.setText(String.valueOf(Double.parseDouble(number1)/Double.parseDouble(number2)));
 				break;
 			}
 		}
@@ -159,7 +160,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 			displayText.setText("");
 			number1 = "";
 			number2 = "";
-			operator= "";
+			operator= null;
 		}
 	}
 
